@@ -1,0 +1,10 @@
+- model the form details
+- create create celebrant service, controller, route
+- create validator
+- create database
+- create or check for random msg
+- create and link the schedular and nodemailer
+- create server... connect DB, add route, validator
+- build HTML
+- test
+- render
