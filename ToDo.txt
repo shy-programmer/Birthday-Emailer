@@ -1,4 +1,4 @@
-- model the form details
+- model the form details//
 - create create celebrant service, controller, route
 - create validator
 - create database
