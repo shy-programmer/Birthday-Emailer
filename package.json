@@ -1,0 +1,20 @@
+{
+  "name": "birthday-emailer",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/shy-programmer/Birthday-Emailer#readme",
+  "bugs": {
+    "url": "https://github.com/shy-programmer/Birthday-Emailer/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shy-programmer/Birthday-Emailer.git"
+  },
+  "license": "ISC",
+  "author": "Shy Programmer (LC)",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
