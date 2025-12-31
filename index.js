@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 3000;
 const birthdayRoute = require('./birthdayApi/birthday.route')
 const {connect} = require('./utils/database');
 connect();
+require('./utils/BirthdayMailer')
 
 // Middleware
 app.use(express.json());
