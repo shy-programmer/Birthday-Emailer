@@ -10,21 +10,22 @@ const sender = process.env.MY_MAIL
 
 const transporter = nodemailer.createTransport({
     service: "gmail",
-    host: "smtp.gmail.com",
-    scope: "https://mail.google.com/",
-    port: 587,
-    secure: false,
+    // host: "smtp.gmail.com",
+    // scope: "https://mail.google.com/",
+    // port: 587,
+    // secure: false,
     auth: {
-        type: "OAuth2",
-        user: "earforsound@gmail.com",
-        clientId: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        refreshToken: process.env.GOOGLE_REFRESH_TOKEN,
+        // type: "OAuth2",
+        user: sender,
+        pass: process.env.GOOGLE_APP_PASSWORD
+        // clientId: process.env.GOOGLE_CLIENT_ID,
+        // clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        // refreshToken: process.env.GOOGLE_REFRESH_TOKEN,
     }
 });
 
 
-schedule.scheduleJob('0 7 * * *', async () => {
+schedule.scheduleJob('* * * * *', async () => {
     console.log('Checking for birthdays today...');
 
     await birthdayChecker()
@@ -44,12 +45,14 @@ const birthdayChecker = async () => {
             ]
         }
     });
-
     if (celebrants.length === 0) {
+            console.log('I didnt get here', celebrants)
         console.log("No birthdays today");
         return
     }
     else {
+            console.log('I got here', celebrants)
+
         for (const celebrant of celebrants) {
             await sendBirthdayEmail(celebrant.email, celebrant.username);
         }
@@ -72,7 +75,7 @@ const sendBirthdayEmail = async (email, username) => {
 }
 
 const getBirthdayTemplate = (username) => {
-    const filePath = path.join(__dirname, 'birthdayMail.html');
+    const filePath = path.join(__dirname, '../views/birthdayMail.html');
     let html = fs.readFileSync(filePath, 'utf8');
 
     html = html.replace('{{username}}', username);
