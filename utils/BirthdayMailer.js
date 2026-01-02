@@ -29,13 +29,10 @@ async function createTransporter() {
         // }
         return nodemailer.createTransport({
             service: "gmail",
-            host: "smtp.gmail.com",
-            scope: "https://mail.google.com/",
-            port: 587,
-            secure: false,
-            requireTLS: true,
-            logger: true,
-            debug: true,
+            // host: "smtp.gmail.com",
+            // scope: "https://mail.google.com/",
+            // port: 587,
+            // secure: true,
             auth: {
                 // type: "OAuth2",
                 user: SENDER,
