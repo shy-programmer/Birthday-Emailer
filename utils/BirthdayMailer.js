@@ -69,7 +69,7 @@ const SENDER = process.env.MY_MAIL
 // });
 
 
-schedule.scheduleJob('* * * * *', async () => {
+schedule.scheduleJob('0 * * * *', async () => {
     console.log('Checking for birthdays today...');
 
     await birthdayChecker()

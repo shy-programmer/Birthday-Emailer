@@ -13,6 +13,7 @@ require('./utils/BirthdayMailer')
 // Middleware
 app.use(express.json());
 app.use(cors());
+app.use(express.static(join(__dirname, 'views')));
 
 app.use('/api/v1/birthday', birthdayRoute);
 
