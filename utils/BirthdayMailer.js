@@ -13,7 +13,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const SENDER = process.env.MY_MAIL
 
 // Cron job for sending
-schedule.scheduleJob('*/5 * * * *', async () => {
+schedule.scheduleJob('0 7 * * *', async () => {
     console.log('Checking for birthdays today...');
 
     await birthdayChecker()
@@ -39,10 +39,6 @@ const birthdayChecker = async () => {
         return
     }
     else {
-        console.log({
-            mail: SENDER,
-            password: process.env.GOOGLE_APP_PASSWORD
-        })
         for (const celebrant of celebrants) {
             await sendBirthdayEmail(celebrant.email, celebrant.username);
         }
