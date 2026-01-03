@@ -6,7 +6,7 @@ const { join } = require('node:path');
 const cors = require('cors');
 const PORT = process.env.PORT || 3000;
 const birthdayRoute = require('./birthdayApi/birthday.route')
-const {connect} = require('./utils/database');
+const { connect } = require('./utils/database');
 connect();
 require('./utils/BirthdayMailer')
 
@@ -15,12 +15,23 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static(join(__dirname, 'views')));
 
+// Routes
 app.use('/api/v1/birthday', birthdayRoute);
 
+// Homepage
 app.get('/', (req, res) => {
-  res.sendFile(join(__dirname, './views/birthday.index.html'));
+    res.sendFile(join(__dirname, './views/birthday.index.html'));
 });
 
+// 404 endpoint
+app.use((req, res) => {
+    res.status(404).send(`
+        <h1>404 - Page Not Found</h1>
+        <p>The page you are looking for does not exist.</p>
+    `);
+});
+
+// Server
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });

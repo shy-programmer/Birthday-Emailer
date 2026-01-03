@@ -18,7 +18,7 @@ const createCelebrant = async (req, res) => {
 }
 
 const getCelebrants = async (req, res) => {
-    try{
+    try {
         const response = await celebrantService.getCelebrants()
 
         res.status(response.code).json({

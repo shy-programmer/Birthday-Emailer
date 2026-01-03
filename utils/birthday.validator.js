@@ -1,10 +1,11 @@
 const joi = require('joi');
 const celebrantModel = require('../birthdayApi/birthday.model')
 
+// Validating celebrant input
 const ValidateCelebrant = async (req, res, next) => {
     const schema = joi.object({
         username: joi.string().alphanum().required(),
-        email: joi.string().email({ minDomainSegments: 2}).required(),
+        email: joi.string().email({ minDomainSegments: 2 }).required(),
         birthday: joi.date().required()
     })
 

@@ -1,7 +1,7 @@
 const celebrantModel = require('./birthday.model')
 
 const createCelebrant = async (data) => {
-    const {username, email, birthday} = data
+    const { username, email, birthday } = data
     const newCelebrant = await celebrantModel.create({
         username,
         email,
